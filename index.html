@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+function create() 
+{
+var div = document.createElement('div');
+let color=randomColor()
+let x= randomX()
+let y= randomY()
+console.log(x,y)
+div.style.zIndex = '1';
+div.style.position = 'absolute';
+div.style.left = x + 'px';
+div.style.top=y + 'px';
+div.style.width = '50px';
+div.style.height = '50px';
+div.style.borderRadius = '50%';
+div.style.background = color;
+document.body.appendChild(div)
+return div
+}
+function randomColor()
+{
+    let palet=["red",
+        "blue","green" ]
+    let color=palet[Math.floor(Math.random()*3)]
+    return color
+}
+function randomX(){
+let x=Math.random()*600
+return x;
+}
+function randomY(){
+let y=Math.random()*600
+return y;
+}
+let arr=[]
+for (let i=0;i<15;i++)
+{
+arr.push(create())
+}
+console.log(arr[0])
+let position=0;
+let velocity=100;
+let time=1000;
+let ball=arr[0]
+function move()
+{
+    position=position+velocity
+    ball.style.left=position+'px'
+}
+setInterval(move,time)
+</script>
+</body>
+</html>
